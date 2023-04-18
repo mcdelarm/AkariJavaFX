@@ -120,31 +120,31 @@ public class ModelImpl implements Model {
             throw new IllegalArgumentException();
         }
         // Check Left of Lamp
-        int i = c;
+        int i = c - 1;
         while (i >= 0 && getActivePuzzle().getCellType(r, i) == CellType.CORRIDOR) {
             if (isLamp(r, i)) {
                 return true;
             }
             i--;
         }
-        // Check Right of cell location
-        i = c;
+        // Check Right of Lamp
+        i = c + 1;
         while (i <= getActivePuzzle().getWidth() - 1 && getActivePuzzle().getCellType(r, i) == CellType.CORRIDOR) {
             if (isLamp(r, i)) {
                 return true;
             }
             i++;
         }
-        // Check Above cell location
-        int j = r;
+        // Check Above Lamp
+        int j = r - 1;
         while (j >= 0 && getActivePuzzle().getCellType(j, c) == CellType.CORRIDOR) {
             if (isLamp(j, c)) {
                 return true;
             }
             j--;
         }
-        // Check Below cell location
-        j = r;
+        // Check Below Lamp
+        j = r + 1;
         while (j <= getActivePuzzle().getHeight() - 1 && getActivePuzzle().getCellType(j, c) == CellType.CORRIDOR) {
             if (isLamp(j, c)) {
                 return true;
@@ -202,6 +202,11 @@ public class ModelImpl implements Model {
                 if (getActivePuzzle().getCellType(i, j) == CellType.CORRIDOR) {
                     if (isLit(i, j) == false) {
                         return false;
+                    }
+                    if (isLamp(i, j)) {
+                        if (isLampIllegal(i, j)) {
+                            return false;
+                        }
                     }
                 }
                 if (getActivePuzzle().getCellType(i, j) == CellType.CLUE) {
