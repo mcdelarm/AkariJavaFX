@@ -197,8 +197,8 @@ public class ModelImpl implements Model {
     public boolean isSolved() {
         int height = getActivePuzzle().getHeight();
         int width = getActivePuzzle().getWidth();
-        for (int i = 0;  i < width; i++) {
-            for (int j = 0; j < height; j++) {
+        for (int i = 0;  i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 if (getActivePuzzle().getCellType(i, j) == CellType.CORRIDOR) {
                     if (isLit(i, j) == false) {
                         return false;
