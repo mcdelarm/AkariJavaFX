@@ -5,3 +5,43 @@
  * JavaFX start() method:
  *   scene.getStylesheets().add("main.css");
  */
+ .wall {
+    -fx-background-color: black;
+ }
+
+ .clue-unsatisfied {
+    -fx-background-color: #000000;
+    -fx-text-align: center;
+    -fx-text-color: #ff0000;
+ }
+
+ .clue-satisfied {
+    -fx-background-color: #000000;
+    -fx-text-align: center;
+    -fx-text-color: #FFFFFF;
+ }
+
+ .lit-corridor {
+    -fx-background-color: #F1EB9C;
+ }
+
+ .unlit-corridor {
+    -fx-background-color: #FFFFFF;
+ }
+
+ .corridor-lamp {
+    -fx-background-color: #F1EB9C;
+
+ }
+ .corridor-illegal-lamp {
+    -fx-background-color: #ff0000;
+ }
+.grid {
+     -fx-background-radius: 5.0;
+     -fx-background-insets: 0.0 5.0 0.0 5.0;
+     -fx-padding: 5;
+     -fx-hgap: 2.5;
+     -fx-vgap: 2.5;
+     -fx-background-color: #36454F
+}
+
