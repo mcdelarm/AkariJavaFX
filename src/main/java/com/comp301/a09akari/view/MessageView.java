@@ -7,20 +7,21 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
 public class MessageView implements FXComponent {
-    private Model model;
-    private ClassicMvcController controller;
+  private final Model model;
+  private final ClassicMvcController controller;
 
-    public MessageView(Model model, ClassicMvcController controller) {
-        this.model = model;
-        this.controller = controller;
+  public MessageView(Model model, ClassicMvcController controller) {
+    this.model = model;
+    this.controller = controller;
+  }
+
+  @Override
+  public Parent render() {
+    StackPane layout = new StackPane();
+    if (model.isSolved()) {
+      Label label = new Label("Congratulations! You have successfully completed the puzzle!");
+      layout.getChildren().add(label);
     }
-    @Override
-    public Parent render() {
-        StackPane layout = new StackPane();
-        if (model.isSolved()) {
-            Label label = new Label("Congratulations! You have successfully completed the puzzle!");
-            layout.getChildren().add(label);
-        }
-        return layout;
-    }
+    return layout;
+  }
 }

@@ -4,7 +4,6 @@ import com.comp301.a09akari.controller.ClassicMvcController;
 import com.comp301.a09akari.controller.ControllerImpl;
 import com.comp301.a09akari.model.*;
 import javafx.application.Application;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -32,22 +31,22 @@ public class AppLauncher extends Application {
     layout.getChildren().add(pv.render());
     layout.getChildren().add(cv.render());
     layout.getChildren().add(mv.render());
-    ModelObserver observer = (Model m) -> {
-      VBox layout1 = new VBox();
-      layout1.getChildren().add(piv.render());
-      layout1.getChildren().add(pv.render());
-      layout1.getChildren().add(cv.render());
-      layout1.getChildren().add(mv.render());
-      Scene scene1 = new Scene(layout1);
-      scene1.getStylesheets().add("main.css");
-      stage.setScene(scene1);
-      stage.show();
-    };
+    ModelObserver observer =
+        (Model m) -> {
+          VBox layout1 = new VBox();
+          layout1.getChildren().add(piv.render());
+          layout1.getChildren().add(pv.render());
+          layout1.getChildren().add(cv.render());
+          layout1.getChildren().add(mv.render());
+          Scene scene1 = new Scene(layout1);
+          scene1.getStylesheets().add("main.css");
+          stage.setScene(scene1);
+          stage.show();
+        };
     model.addObserver(observer);
     Scene scene = new Scene(layout);
     scene.getStylesheets().add("main.css");
     stage.setScene(scene);
     stage.show();
-
   }
 }
