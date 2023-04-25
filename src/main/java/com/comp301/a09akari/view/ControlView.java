@@ -3,6 +3,7 @@ package com.comp301.a09akari.view;
 import com.comp301.a09akari.controller.ClassicMvcController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -17,6 +18,7 @@ public class ControlView implements FXComponent {
   @Override
   public Parent render() {
     HBox layout = new HBox();
+    layout.setAlignment(Pos.CENTER);
     Button resetButton = new Button("Reset Puzzle");
     layout.getChildren().add(resetButton);
     resetButton.setOnAction(

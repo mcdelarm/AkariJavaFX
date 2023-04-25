@@ -44,4 +44,10 @@
      -fx-vgap: 2.5;
      -fx-background-color: #36454F
 }
+.message {
+    -fx-background-color: CBC3E3;
+    -fx-padding: 10;
+    -fx-spacing: 8;
+
+}
 
