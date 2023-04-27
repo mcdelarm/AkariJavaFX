@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 
 public class PuzzleView implements FXComponent {
@@ -29,31 +30,38 @@ public class PuzzleView implements FXComponent {
   public Parent render() {
     GridPane layout = new GridPane();
     layout.setAlignment(Pos.CENTER);
-    layout.setPrefWidth(250);
-    layout.setMinWidth(250);
+    layout.setPrefWidth(400);
+    layout.setPrefHeight(320);
     Puzzle activePuzzle = model.getActivePuzzle();
     for (int i = 0; i < activePuzzle.getHeight(); i++) {
       for (int j = 0; j < activePuzzle.getWidth(); j++) {
         if (activePuzzle.getCellType(i, j) == CellType.WALL) {
-          layout.add(makeWall(), i, j);
+          HBox wall = makeWall();
+          layout.add(wall, i, j);
         } else if (activePuzzle.getCellType(i, j) == CellType.CLUE
             && !model.isClueSatisfied(i, j)) {
-          layout.add(makeUnsatisfiedClue(activePuzzle.getClue(i, j)), i, j);
+          HBox unsatisfiedClue = makeUnsatisfiedClue(activePuzzle.getClue(i, j));
+          layout.add(unsatisfiedClue, i, j);
         } else if (activePuzzle.getCellType(i, j) == CellType.CLUE && model.isClueSatisfied(i, j)) {
-          layout.add(makeSatisfiedClue(activePuzzle.getClue(i, j)), i, j);
+          HBox satisfiedClue = makeSatisfiedClue(activePuzzle.getClue(i, j));
+          layout.add(satisfiedClue, i, j);
         } else if (activePuzzle.getCellType(i, j) == CellType.CORRIDOR && !model.isLit(i, j)) {
-          layout.add(makeUnlitCorridor(i, j), i, j);
+          Button unlitCorridor = makeUnlitCorridor(i, j);
+          layout.add(unlitCorridor, i, j);
         } else if (activePuzzle.getCellType(i, j) == CellType.CORRIDOR
             && model.isLit(i, j)
             && !model.isLamp(i, j)) {
-          layout.add(makeLitCorridor(i, j), i, j);
+          Button litCorridor = makeLitCorridor(i, j);
+          layout.add(litCorridor, i, j);
         } else if (activePuzzle.getCellType(i, j) == CellType.CORRIDOR
             && model.isLamp(i, j)
             && !model.isLampIllegal(i, j)) {
-          layout.add(makeCorridorWithLamp(i, j), i, j);
+          Button corridorwithLamp = makeCorridorWithLamp(i, j);
+          layout.add(corridorwithLamp, i, j);
         } else if (activePuzzle.getCellType(i, j) == CellType.CORRIDOR
             && model.isLampIllegal(i, j)) {
-          layout.add(makeCorridorWithIllegalLamp(i, j), i, j);
+          Button corridorWithIllegalLamp = makeCorridorWithIllegalLamp(i, j);
+          layout.add(corridorWithIllegalLamp, i, j);
         }
       }
     }
