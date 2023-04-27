@@ -72,6 +72,8 @@ public class PuzzleView implements FXComponent {
   private Button makeUnlitCorridor(int r, int c) {
     Button button = new Button();
     button.setPrefSize(30, 30);
+    button.setMaxWidth(Double.MAX_VALUE);
+    button.setMaxHeight(Double.MAX_VALUE);
     button.setOnAction(
         new EventHandler<ActionEvent>() {
           @Override
@@ -86,6 +88,8 @@ public class PuzzleView implements FXComponent {
   private Button makeLitCorridor(int r, int c) {
     Button button = new Button();
     button.setPrefSize(30, 30);
+    button.setMaxWidth(Double.MAX_VALUE);
+    button.setMaxHeight(Double.MAX_VALUE);
     button.setOnAction(
         new EventHandler<ActionEvent>() {
           @Override
@@ -99,6 +103,8 @@ public class PuzzleView implements FXComponent {
 
   private Button makeCorridorWithLamp(int r, int c) {
     Button button = new Button();
+    button.setMaxWidth(Double.MAX_VALUE);
+    button.setMaxHeight(Double.MAX_VALUE);
     button.setPrefSize(30, 30);
     Image img = new Image("light-bulb.png");
     ImageView view = new ImageView(img);
@@ -120,6 +126,8 @@ public class PuzzleView implements FXComponent {
   private Button makeCorridorWithIllegalLamp(int r, int c) {
     Button button = new Button();
     button.setPrefSize(30, 30);
+    button.setMaxWidth(Double.MAX_VALUE);
+    button.setMaxHeight(Double.MAX_VALUE);
     Image img = new Image("light-bulb.png");
     ImageView view = new ImageView(img);
     view.setPreserveRatio(true);
